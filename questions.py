@@ -1,15 +1,70 @@
 import random
 
-words = [
-    "python",
-    "programa",
-    "variable",
-    "funcion",
-    "bucle",
-    "cadena",
-    "entero",
-    "lista",
-]
+categories = {
+    "paises": [
+        "argentina",
+        "brazil",
+        "uruguay",
+        "chile",
+        "paraguay",
+        "peru",
+        "ecuador",
+        "canada",
+    ],
+    "programacion": [
+        "variable",
+        "funcion",
+        "bucle",
+        "cadena",
+        "entero",
+        "lista",
+        "programa",
+        "python",
+        "frontend",
+        "backend",
+        "git",
+        "servidor",
+    ],
+    "colores": [
+        "rojo",
+        "azul",
+        "verde",
+        "violeta",
+        "magenta",
+        "amarillo",
+        "naranja",
+        "marron",
+        "turquesa",
+        "cian",
+        "celeste",
+    ],
+}
+
+selected_category = False
+words = False
+while not words:
+    print("Elija una de las categorias")
+    for i, cat in enumerate(categories.keys()):
+        print(f"{i}) {cat}")
+
+    user_category_input = input("Categoria: ")
+
+    if user_category_input in categories.keys():
+        selected_category = user_category_input
+        words = categories[user_category_input]
+        break
+
+    try:
+        int_user_category_input = int(user_category_input)
+        if (int_user_category_input >= 0) and (int_user_category_input < len(categories.keys())):
+            selected_category = [c for c in categories.keys()][int_user_category_input]
+            words = categories[selected_category]
+            break
+        print("No existe la categoria ingresada")
+    except:
+        print("No existe la categoria ingresada")
+
+print(f"Elejiste la categoria {selected_category}")
 
 word = random.choice(words)
 guessed = []
