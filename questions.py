@@ -26,7 +26,6 @@ while attempts > 0:
             progress += letter + " "
         else:
             progress += "_ "
-            
     print(progress)
 
     # Verificar si el jugador ya adivinó la palabra completa
@@ -38,6 +37,10 @@ while attempts > 0:
     print(f"Letras usadas: {', '.join(guessed)}")
 
     letter = input("Ingresá una letra: ")
+
+    if len(letter) > 1 or len(letter) == 0 or letter < 'A' or letter > 'z':
+        print("Entrada no válida")
+        continue
 
     if letter in guessed:
         print("Ya usaste esa letra.")
